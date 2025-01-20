@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    background: #f5f5f5;
+}
+
+.rooms {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.room {
+    border: 1px solid #e1e1e1;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, border 0.3s;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+}
+
+.room img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+.room:hover {
+    background-color: #f9f9f9;
+}
+
+.selected {
+    border: 2px solid #000150;
+    background-color: #d9f2f4;
+}
+
+.price-box {
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #b0bec5;
+    display: inline-block;
+    font-weight: bold;
+    background-color: #e1f5fe;
+    border-radius: 5px;
+}
+
+
+
+button {
+    width: 120px;
+    height: 50px;
+    border: 2px solid #3498db;
+    background-color: #d9f2f4;
+    font-size: medium;
+    margin-left: 20px;
+    margin-left: 40px;
+}
+
+input {
+    width: 100px;
+    
+    height: 25px;
+    border: 2px solid #3498db;
+    background-color: #d9f2f4;
+    margin-left: 40px;
+}
+
+.numbers input {
+    margin-left: 20px;
+    width: 200px;
+    height: 40px;
+    font-size: medium;
+}

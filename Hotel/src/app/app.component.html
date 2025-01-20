@@ -1,0 +1,31 @@
+<h1>Rezerwacje pokoi</h1>
+<p>Wybierz typ pokoju:</p>
+
+<div class="rooms">
+  <div class="room" [class.selected]="selectedRoom==1" (click)="selectedRoom=1; ">
+    <img src="images/uglyroom.jpg" alt="Pokój Standardowy">
+    <div class="price-box">Standard 80 zł</div>
+  </div>
+  <div class="room" [class.selected]="selectedRoom==2" (click)="selectedRoom=2; ">
+    <img src="images/midroom.jpg" alt="Pokój Średni">
+    <div class="price-box">Medium 120 zł</div>
+  </div>
+  <div class="room" [class.selected]="selectedRoom==3" (click)="selectedRoom=3; ">
+    <img src="images/highroom.jpg" alt="Pokój Premium">
+    <div class="price-box">Deluxe 150 zł</div>
+  </div>
+</div>
+
+<div class="numbers">
+  <p>Liczba dni(1-14):</p>
+  <input type="number" [(ngModel)]="dni"  min="1" max="14">
+
+  <p>Liczba gości(1-4):</p>
+  <input type="number" [(ngModel)]="goscie"  min="1" max="4">
+</div>
+
+<p><input type="checkbox" [(ngModel)]="jedzenie" > Opcja z wyżywieniem(+75 zł/os.)</p>
+
+<button (click)="obliczKoszt()">Oblicz koszt</button>
+
+<p id="wyn">Koszt: {{koszt}} zł</p>
