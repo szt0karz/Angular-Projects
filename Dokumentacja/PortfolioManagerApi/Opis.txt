@@ -1,0 +1,13 @@
+To API służy do zarządzania projektami programistycznymi i powiązanymi technologiami. Aplikacja wykorzystuje **ASP.NET Core** z **Entity Framework Core** do komunikacji z bazą danych, która jest zrealizowana na SQL Server. Główne operacje, które API wykonuje w bazie danych, obejmują:
+
+- **Dodawanie nowych projektów i technologii**: Użytkownicy mogą tworzyć nowe projekty i przypisywać do nich technologie, które są przechowywane w osobnych tabelach w bazie danych. Projekty i technologie są połączone przez tabelę pośrednią, która tworzy relację wiele-do-wielu między nimi.
+  
+- **Odczyt istniejących danych**: API umożliwia pobieranie informacji o projektach i powiązanych technologiach. Dzięki relacjom między tabelami, możliwe jest pobieranie technologii przypisanych do danego projektu oraz projektów, w których dana technologia została użyta.
+
+- **Aktualizacja i usuwanie danych**: API wspiera operacje aktualizacji istniejących projektów i technologii oraz ich usuwanie z bazy danych. Przykładowo, użytkownik może zmienić status projektu lub zaktualizować listę używanych technologii.
+
+- **Relacje między tabelami**: W bazie danych znajduje się tabela `ProjectTechnologies`, która zarządza relacjami wiele-do-wielu między projektami a technologiami. Każdy wpis w tej tabeli reprezentuje powiązanie jednej technologii z projektem, co umożliwia śledzenie, jakie technologie zostały użyte w danym projekcie.
+
+Aplikacja jest w fazie rozwoju, a frontend w **Angular** jest obecnie projektowany. Będzie on pozwalał na interaktywną obsługę danych przez użytkowników, umożliwiając im dodawanie, edytowanie oraz usuwanie projektów i technologii w łatwy sposób. Zgodnie z planem, użytkownicy będą mogli również przeglądać historię zmian i śledzić postępy swoich projektów w systemie. 
+
+Dzięki zastosowaniu **Entity Framework Core**, cała logika biznesowa związana z bazą danych jest ukryta za REST API, co umożliwia łatwą integrację z frontendem Angular.
