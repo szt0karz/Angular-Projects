@@ -1,0 +1,35 @@
+# Hotel Booking App
+
+Aplikacja do rezerwacji pokoi w hotelu z opcją wyboru typu pokoju, liczby gości, liczby dni oraz wyżywienia.
+
+## Ceny Pokoi
+
+Aplikacja oferuje trzy typy pokoi w różnych przedziałach cenowych:
+
+* **Pokój Standardowy**: 80 zł za noc
+* **Pokój Średni**: 120 zł za noc
+* **Pokój Premium (Deluxe)**: 150 zł za noc
+
+## Dodatkowe Opcje
+
+* **Opcja z wyżywieniem**: 75 zł na osobę za dzień
+
+## Obliczanie Kosztów
+
+Koszt pobytu jest obliczany na podstawie:
+1. Wybranego typu pokoju
+2. Liczby dni
+3. Liczby gości
+4. Opcji wyżywienia (jeśli została wybrana)
+
+### Przykład obliczeń:
+
+* **Pokój Standardowy** dla 2 gości na 3 dni bez wyżywienia:
+  * Koszt: 80 zł * 3 dni * 2 gości = 480 zł
+  
+* **Pokój Premium** dla 1 gościa na 5 dni z wyżywieniem:
+  * Koszt pokoju: 150 zł * 5 dni * 1 gość = 750 zł
+  * Koszt wyżywienia: 75 zł * 5 dni * 1 gość = 375 zł
+  * Łączny koszt: 750 zł + 375 zł = 1125 zł
+
+Wszystkie ceny są podane za osobę na dobę.
