@@ -1,0 +1,12 @@
+🚀 NASA APOD Calendar
+📌 Opis
+Aplikacja Angular umożliwiająca przeglądanie codziennych zdjęć NASA APOD w formie kalendarza. Obsługuje wybór dat, zapisywanie ulubionych obrazów i tryb ciemny.
+
+🔥 Funkcjonalności
+📅 Kalendarz – umożliwia wybór dowolnej daty i pobranie zdjęcia NASA APOD.
+🌌 Pobieranie zdjęć – automatyczne pobieranie obrazu i opisu dla wybranego dnia.
+⭐ Ulubione zdjęcia – możliwość zapisywania wybranych obrazów (dane przechowywane w localStorage).
+🎨 Tryb ciemny/jasny – przełączanie między trybem ciemnym a jasnym.
+🔄 Nawigacja po miesiącach – przeglądanie zdjęć z innych miesięcy.
+🖼 Obrazy w wysokiej jakości – możliwość pobrania zdjęcia w wersji HD (jeśli dostępne).
+❌ Obsługa błędów – komunikaty w przypadku braku zdjęcia dla wybranej daty.
