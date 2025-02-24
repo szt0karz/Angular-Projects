@@ -1,0 +1,80 @@
+<div class="container">
+  <!-- Kontrolki do zmiany motywu i przejścia do dzisiejszej daty -->
+  <div class="controls">
+    <button class="theme-btn" (click)="darkMode.set(!darkMode())">
+      {{ darkMode() ? '🌞' : '🌙' }}
+    </button>
+    <button class="today-btn" (click)="goToToday()">Dzisiaj</button>
+  </div>
+
+  <!-- Kalendarz do wyboru daty -->
+  <div class="calendar">
+    <div class="header">
+      <button (click)="changeMonth(-1)">&lt;</button>
+      <h2>{{ currentDate() | date:'MMMM yyyy' }}</h2>
+      <button (click)="changeMonth(1)">&gt;</button>
+    </div>
+
+    <div class="days-grid">
+      <div 
+        *ngFor="let day of daysInMonth"
+        (click)="selectDate(day)"
+        [class.disabled]="day > today" 
+        [class.selected]="selectedImage()?.date === day.toISOString().split('T')[0]" 
+        [class.favorite]="favorites().has(day.toISOString().split('T')[0])" S
+        class="day"
+      >
+        {{ day.getDate() }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Sekcja wyświetlania obrazu dla wybranej daty -->
+  <div class="content">
+    @if (loading()) {
+      <div class="loading-spinner"></div> <!-- Ikona ładowania -->
+    }
+    
+    @if (selectedImage() && !loading()) {
+      <div class="image-card">
+        <div class="image-wrapper">
+          <img 
+            [src]="selectedImage()?.url" 
+            [alt]="selectedImage()?.title"
+          >
+          
+          <!-- Przycisk do oznaczenia zdjęcia jako ulubione -->
+          <button 
+            class="favorite-star" 
+            [class.active]="favorites().has(selectedImage()?.date || '')"
+            (click)="toggleFavorite(selectedImage()?.date || '')"
+          >
+            ★
+          </button>
+
+          <!-- Link do pobrania obrazu w jakości HD (jeśli dostępny) -->
+          @if (selectedImage()?.hdurl) {
+            <a 
+              [href]="selectedImage()?.hdurl" 
+              class="hd-link" 
+              target="_blank"
+            >
+              Pobierz HD
+            </a>
+          }
+        </div>
+
+        <div class="image-details">
+          <h3>{{ selectedImage()?.title }}</h3>
+          <p class="explanation">{{ selectedImage()?.explanation }}</p>
+        </div>
+      </div>
+    }
+
+    @if (error()) {
+      <div class="error-message">
+        {{ error() }} <!-- Komunikat błędu w przypadku problemów -->
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,302 @@
+:root {
+    --primary: #FF6B6B;
+    --secondary: #4ECDC4;
+    --accent: #FFD700;
+    --background-dark: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+    --background-light: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+    --text-dark: #ffffff;
+    --text-light: #2c3e50;
+    --glass-dark: rgba(255, 255, 255, 0.1);
+    --glass-light: rgba(0, 0, 0, 0.05);
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    min-height: 100vh;
+    background: var(--background-dark);
+    color: var(--text-dark);
+    font-family: 'Inter', system-ui, sans-serif;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Kalendarz */
+  .calendar {
+    background: var(--glass-dark);
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.8rem;
+  }
+  
+  .header button {
+    background: var(--primary);
+    border: none;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.25s ease;
+  }
+  
+  .header button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  }
+  
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .day {
+    padding: 0.8rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.6rem;
+    transition: all 0.2s ease;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+  }
+  
+  /* Gwiazdka w kalendarzu */
+  .day.favorite::after {
+    content: '★';
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    color: var(--accent);
+    font-size: 0.8em;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    animation: starAppear 0.3s ease;
+  }
+  
+  @keyframes starAppear {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .day.selected {
+    background: var(--primary) !important;
+    color: white;
+    font-weight: bold;
+  }
+  
+  /* Sekcja obrazu */
+  .content {
+    width: 100%;
+    max-width: 800px;
+    padding: 0 1rem;
+  }
+  
+  .image-card {
+    background: var(--glass-dark);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+  }
+  
+  .image-wrapper img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Przycisk HD */
+  .hd-link {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, var(--secondary) 0%, #4EE4C4 100%);
+    color: white;
+    padding: 0.8rem 1.6rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+    z-index: 2;
+  }
+  
+  .hd-link::before {
+    content: "⬇";
+    font-size: 1.2em;
+  }
+  
+  .hd-link:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
+  }
+  
+  /* Gwiazdka ulubionych */
+  .favorite-star {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 215, 0, 0.15);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+    z-index: 2;
+  }
+  
+  .favorite-star.active {
+    background: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    animation: pulseStar 1.5s infinite;
+  }
+  
+  @keyframes pulseStar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Kontrolki */
+  .controls {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.8rem;
+    z-index: 1000;
+  }
+  
+  .theme-btn, .today-btn {
+    background: linear-gradient(135deg, var(--primary) 0%, #FF8787 100%);
+    border: none;
+    color: white;
+    padding: 0.8rem 1.4rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  .theme-btn:hover, .today-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Opis obrazu */
+  .image-details {
+    padding: 1.5rem;
+  }
+  
+  .image-details h3 {
+    margin-bottom: 1rem;
+    color: var(--accent);
+  }
+  
+  .explanation {
+    line-height: 1.6;
+    opacity: 0.9;
+    font-size: 0.95rem;
+  }
+  
+  /* Responsywność */
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem;
+    }
+    
+    .image-wrapper img {
+      height: 300px;
+    }
+    
+    .hd-link {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+    }
+    
+    .favorite-star {
+      width: 35px;
+      height: 35px;
+    }
+    
+    .day.favorite::after {
+      font-size: 0.7em;
+      top: 2px;
+      right: 3px;
+    }
+    
+    .controls {
+      top: auto;
+      bottom: 1rem;
+      right: 50%;
+      transform: translateX(50%);
+    }
+  }
+  
+  /* Animacje */
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .loading-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+  
+  .error-message {
+    background: rgba(255, 107, 107, 0.15);
+    color: var(--primary);
+    padding: 1rem;
+    border-radius: 0.8rem;
+    border: 2px solid var(--primary);
+    margin-top: 1rem;
+  }
